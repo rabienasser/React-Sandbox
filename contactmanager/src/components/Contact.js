@@ -10,7 +10,9 @@ export default class Contact extends Component {
       this.setState({ showContactInfo: !this.state.showContactInfo });
    };
 
-   onDeleteClick = (e) => {};
+   onDeleteClick = () => {
+      this.props.deleteClickHandler();
+   };
 
    render() {
       // USING DESTRUCTURING
@@ -47,4 +49,5 @@ Contact.propTypes = {
    name: PropTypes.string.isRequired,
    email: PropTypes.string.isRequired,
    phone: PropTypes.string.isRequired,
+   deleteClickHandler: PropTypes.func.isRequired,
 };
