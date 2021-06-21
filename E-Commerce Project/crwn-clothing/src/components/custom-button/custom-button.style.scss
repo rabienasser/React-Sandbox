@@ -20,4 +20,15 @@
       color: black;
       border: 1px solid black;
    }
+
+   &.google-sign-in {
+      color: white;
+      background-color: #4285f4;
+      margin-top: 20px;
+
+      &:hover {
+         background-color: #1969e9;
+         border: none;
+      }
+   }
 }
