@@ -27,11 +27,21 @@ class App extends React.Component {
             const userRef = await createUserProfileDocument(userAuth);
 
             userRef.onSnapshot((snapShot) => {
-               console.log(snapShot);
+               console.log(snapShot.data()); //logging '.data()' returns the actual user information in the console
+               this.setState(
+                  {
+                     currentUser: {
+                        id: snapShot.id,
+                        ...snapShot.data(),
+                     },
+                  },
+                  () => console.log(this.state) //callback function bc setState is asynchronous
+               );
             });
+         } else {
+            this.setState({ currentUser: userAuth }); //If no user is signed in, currentUser becomes null
          }
-
-         console.log(userAuth);
+         // console.log(userAuth);
       });
    }
 
