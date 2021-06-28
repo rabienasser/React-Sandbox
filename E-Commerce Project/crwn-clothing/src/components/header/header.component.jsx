@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
+import { connect } from 'react-redux'  //Lets us modify our component to have access to things related to Redux
+
 import { auth } from '../../firebase/firebase.utils'
 
 import { ReactComponent as Logo } from '../../assets/crown.svg'
@@ -31,4 +33,11 @@ const Header = ({ currentUser }) => {
     )
 }
 
-export default Header
+const mapStateToProps = state => {
+    return {
+        currentUser: state.user.currentUser     //WE ARE GETTING THE NULL VALUE (INITIAL STATE) AS CURRENT USER
+    }
+}
+
+
+export default connect(mapStateToProps)(Header)     
