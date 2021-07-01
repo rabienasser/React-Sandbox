@@ -4,6 +4,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
    );
 
    if (existingCartItem) {
+      //if existingCartItem exists...
       return cartItems.map((cartItem) =>
          cartItem.id === cartItemToAdd.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -11,5 +12,5 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
       );
    }
 
-   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
+   return [...cartItems, { ...cartItemToAdd, quantity: 1 }]; //any time an item is added, quanitity increases from 1
 };
