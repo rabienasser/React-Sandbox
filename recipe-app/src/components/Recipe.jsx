@@ -1,10 +1,19 @@
 import React from 'react'
 
-function Recipe({ title, calories, image }) {
+import './recipe.style.css'
+
+function Recipe({ title, calories, image, ingredients }) {
     return (
-        <div>
+        <div className='recipe'>
             <h1>{title}</h1>
-            <p>{calories}</p>
+            <ol>
+                {
+                    ingredients.map(ing => (
+                        <li>{ing.text}</li>
+                    ))
+                }
+            </ol>
+            <p>Total Calories: {calories.toFixed(0)}</p>
             <img src={image} alt={title} />
         </div>
     )

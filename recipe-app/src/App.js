@@ -15,7 +15,7 @@ function App() {
    //  Use Effect
    useEffect(() => {
       getRecipes();
-   }, [query]);
+   }, [query]); //getRecipes() only displays after 'query' changes
 
    //  Fetch recipes
    const getRecipes = async () => {
@@ -36,6 +36,7 @@ function App() {
       e.preventDefault();
 
       setQuery(search);
+      // Clear input
       setSearch("");
    };
 
@@ -52,14 +53,17 @@ function App() {
                Search
             </button>
          </form>
-         {recipes.map((recipe) => (
-            <Recipe
-               title={recipe.recipe.label}
-               calories={recipe.recipe.calories}
-               image={recipe.recipe.image}
-               key={recipe.recipe.calories}
-            />
-         ))}
+         <div className="recipes">
+            {recipes.map((recipe) => (
+               <Recipe
+                  title={recipe.recipe.label}
+                  calories={recipe.recipe.calories}
+                  image={recipe.recipe.image}
+                  key={recipe.recipe.calories}
+                  ingredients={recipe.recipe.ingredients}
+               />
+            ))}
+         </div>
       </div>
    );
 }
