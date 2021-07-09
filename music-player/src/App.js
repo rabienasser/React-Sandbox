@@ -10,11 +10,12 @@ import "./app.scss";
 function App() {
    // State
    const [songs, setSongs] = useState(data());
+   const [currentSong, setCurrentSong] = useState(songs[0]);
 
    return (
       <div className="App">
-         <Song />
-         <Player />
+         <Song currentSong={currentSong} />
+         <Player currentSong={currentSong} />
       </div>
    );
 }
