@@ -8,9 +8,20 @@ import {
 
 import "./player.style.scss";
 
-function Player({ currentSong }) {
+function Player({ currentSong, isPlaying, setIsPlaying }) {
+   // Ref
+   const audioRef = useRef(null);
+
    // Event Handlers
-   const playSongHandler = () => {};
+   const playSongHandler = () => {
+      setIsPlaying(!isPlaying);
+
+      if (isPlaying) {
+         audioRef.current.pause();
+      } else {
+         audioRef.current.play();
+      }
+   };
 
    return (
       <div className="player">
@@ -37,7 +48,7 @@ function Player({ currentSong }) {
                className="skip-forward"
             />
          </div>
-         <audio src={currentSong.audio}></audio>
+         <audio ref={audioRef} src={currentSong.audio}></audio>
       </div>
    );
 }
