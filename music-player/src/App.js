@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Song from "./components/Song/Song.component";
 import Player from "./components/Player/Player.component";
 import Library from "./components/Library/Library";
+import Nav from "./components/Nav/Nav";
 // Import Utils
 import data from "./utils";
 
@@ -19,6 +20,8 @@ function App() {
       currentTime: 0,
       duration: 0,
    });
+   const [libraryStatus, setLibraryStatus] = useState(false);
+
    const timeUpdateHandler = (e) => {
       const currentTime = e.target.currentTime;
       const duration = e.target.duration;
@@ -32,6 +35,10 @@ function App() {
 
    return (
       <div className="App">
+         <Nav
+            libraryStatus={libraryStatus}
+            setLibraryStatus={setLibraryStatus}
+         />
          <Song currentSong={currentSong} />
          <Player
             currentSong={currentSong}
@@ -49,6 +56,7 @@ function App() {
             isPlaying={isPlaying}
             setSongs={setSongs}
             currentSong={currentSong}
+            libraryStatus={libraryStatus}
          />
          <audio
             onLoadedMetadata={timeUpdateHandler} //when page laods, song duration renders (don't need to press play button to see it)
