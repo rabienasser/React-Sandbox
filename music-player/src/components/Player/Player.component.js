@@ -8,9 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./player.style.scss";
+import { playAudio } from "../../utils";
 
 function Player({
+   songs,
    currentSong,
+   setCurrentSong,
    isPlaying,
    setIsPlaying,
    audioRef,
@@ -44,6 +47,16 @@ function Player({
       });
    };
 
+   const skipTrackHandler = (direction) => {
+      let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+      if (direction === "skip-forward") {
+         setCurrentSong(songs[currentIndex + 1] || songs[0]);
+      } else {
+         setCurrentSong(songs[currentIndex - 1] || songs[songs.length - 1]);
+      }
+      playAudio(isPlaying, audioRef);
+   };
+
    return (
       <div className="player">
          <div className="time-control">
@@ -55,13 +68,15 @@ function Player({
                type="range"
                onChange={dragHandler}
             />
-            <p>{getTime(songInfo.duration)}</p>
+            <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>{" "}
+            {/* stops duration from saying NaN on initial render */}
          </div>
          <div className="play-control">
             <FontAwesomeIcon
                icon={faAngleLeft}
                size="2x"
                className="skip-back"
+               onClick={() => skipTrackHandler("skip-back")}
             />
             <FontAwesomeIcon
                onClick={playSongHandler}
@@ -73,6 +88,7 @@ function Player({
                icon={faAngleRight}
                size="2x"
                className="skip-forward"
+               onClick={() => skipTrackHandler("skip-forward")}
             />
          </div>
       </div>
