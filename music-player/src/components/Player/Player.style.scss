@@ -75,3 +75,22 @@
       cursor: pointer;
    }
 }
+
+@media screen and (max-width: 768px) {
+   .time-control {
+      width: 90% !important;
+   }
+
+   .play-control {
+      width: 60%;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .skip-back,
+   .skip-forward,
+   .play,
+   .shuffle-btn {
+      font-size: 23px;
+   }
+}
