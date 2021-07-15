@@ -59,6 +59,18 @@
    padding: 1rem;
    width: 30%;
 
+   .shuffle-btn {
+      transition: all 0.3s ease;
+
+      &:hover {
+         color: rgb(78, 193, 255);
+      }
+   }
+
+   .shuffle-active {
+      color: rgb(255, 166, 255);
+   }
+
    svg {
       cursor: pointer;
    }

@@ -5,6 +5,7 @@ import {
    faPause,
    faAngleLeft,
    faAngleRight,
+   faRandom,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./player.style.scss";
@@ -142,7 +143,12 @@ function Player({
                className="skip-forward"
                onClick={() => skipTrackHandler("skip-forward")}
             />
-            <button onClick={shuffleSongs}>shuffle</button>
+            <FontAwesomeIcon
+               icon={faRandom}
+               className={`shuffle-btn ${isShuffled ? "shuffle-active" : ""}`}
+               onClick={shuffleSongs}
+               size="2x"
+            />
          </div>
       </div>
    );
