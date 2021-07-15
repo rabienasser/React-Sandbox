@@ -20,6 +20,10 @@ function Player({
    timeUpdateHandler,
    songInfo,
    setSongInfo,
+   isShuffled,
+   setIsShuffled,
+   shuffledSongs,
+   setShuffledSongs,
 }) {
    // Event Handlers
    const playSongHandler = () => {
@@ -48,13 +52,49 @@ function Player({
    };
 
    const skipTrackHandler = (direction) => {
-      let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-      if (direction === "skip-forward") {
-         setCurrentSong(songs[currentIndex + 1] || songs[0]);
+      if (isShuffled) {
+         let currentShuffledIndex = shuffledSongs.findIndex(
+            (song) => song.id === currentSong.id
+         );
+
+         if (direction === "skip-forward") {
+            setCurrentSong(
+               shuffledSongs[currentShuffledIndex + 1] || shuffledSongs[0]
+            );
+         } else {
+            setCurrentSong(
+               shuffledSongs[currentShuffledIndex - 1] ||
+                  shuffledSongs[songs.length - 1]
+            );
+         }
+         playAudio(isPlaying, audioRef);
       } else {
-         setCurrentSong(songs[currentIndex - 1] || songs[songs.length - 1]);
+         let currentIndex = songs.findIndex(
+            (song) => song.id === currentSong.id
+         );
+
+         if (direction === "skip-forward") {
+            setCurrentSong(songs[currentIndex + 1] || songs[0]);
+         } else {
+            setCurrentSong(songs[currentIndex - 1] || songs[songs.length - 1]);
+         }
+
+         playAudio(isPlaying, audioRef);
       }
-      playAudio(isPlaying, audioRef);
+   };
+
+   const shuffleSongs = () => {
+      setIsShuffled(!isShuffled);
+
+      if (!isShuffled) {
+         const shuffledSongs = songs
+            .map((a) => ({ sort: Math.random(), value: a }))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value);
+
+         console.log(shuffledSongs);
+         setShuffledSongs(shuffledSongs);
+      }
    };
 
    // Add input style
@@ -102,6 +142,7 @@ function Player({
                className="skip-forward"
                onClick={() => skipTrackHandler("skip-forward")}
             />
+            <button onClick={shuffleSongs}>shuffle</button>
          </div>
       </div>
    );

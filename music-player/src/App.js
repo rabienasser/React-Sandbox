@@ -22,7 +22,10 @@ function App() {
       animationPercentage: 0,
    });
    const [libraryStatus, setLibraryStatus] = useState(false);
+   const [isShuffled, setIsShuffled] = useState(false);
+   const [shuffledSongs, setShuffledSongs] = useState([]);
 
+   // Event Handlers
    const timeUpdateHandler = (e) => {
       const currentTime = e.target.currentTime;
       const duration = e.target.duration;
@@ -42,6 +45,13 @@ function App() {
       });
    };
 
+   const songEndHandler = async () => {
+      let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+      await setCurrentSong(songs[currentIndex + 1] || songs[0]);
+
+      audioRef.current.play();
+   };
+
    return (
       <div className="App">
          <Nav
@@ -59,6 +69,10 @@ function App() {
             timeUpdateHandler={timeUpdateHandler}
             songInfo={songInfo}
             setSongInfo={setSongInfo}
+            isShuffled={isShuffled}
+            setIsShuffled={setIsShuffled}
+            shuffledSongs={shuffledSongs}
+            setShuffledSongs={setShuffledSongs}
          />
          <Library
             audioRef={audioRef}
@@ -74,6 +88,7 @@ function App() {
             onTimeUpdate={timeUpdateHandler}
             ref={audioRef}
             src={currentSong.audio}
+            onEnded={songEndHandler}
          ></audio>
       </div>
    );
