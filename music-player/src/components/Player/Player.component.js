@@ -64,7 +64,7 @@ function Player({
          } else {
             setCurrentSong(
                shuffledSongs[currentShuffledIndex - 1] ||
-                  shuffledSongs[songs.length - 1]
+                  shuffledSongs[shuffledSongs.length - 1]
             );
          }
          playAudio(isPlaying, audioRef);
