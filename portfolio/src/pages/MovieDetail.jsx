@@ -4,6 +4,10 @@ import {MovieState} from '../movieState'
 
 import styled from 'styled-components'
 
+// Import animations
+import {motion} from 'framer-motion'
+import {pageAnimation, movieDetailAnimation} from '../animation'
+
 
 function MovieDetail() {
     const history = useHistory()
@@ -22,7 +26,7 @@ function MovieDetail() {
     return (
         <>
         {movie && (
-        <div>
+        <motion.div variants={movieDetailAnimation} initial='hidden' animate='show' exit='exit'>
             <Headline>
                 <h2>{movie.title}</h2>
                 <img className={`${movie.url === '/work/good-times' ? 'good-times-img' : ''}`} src={movie.mainImg} alt="movie" />
@@ -37,7 +41,7 @@ function MovieDetail() {
             <ImageDisplay>
                 <img src={movie.secondaryImg} alt="movie" />
             </ImageDisplay>
-        </div>
+        </motion.div>
         )}
         </>
     )

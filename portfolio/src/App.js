@@ -12,32 +12,40 @@ import ContactUs from "./pages/ContactUs";
 import MovieDetail from "./pages/MovieDetail";
 
 // Router
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
+// Animation
+import { AnimatePresence } from "framer-motion";
 
 import "./App.css";
 
 function App() {
+   const location = useLocation();
+   console.log(location);
+
    return (
       <div className="App">
          <GlobalStyle />
+
          <Navbar />
-         <Switch>
-            <Route path="/" exact>
-               <AboutUs />
-            </Route>
+         <AnimatePresence exitBeforeEnter>
+            <Switch location={location} key={location.pathname}>
+               <Route path="/" exact>
+                  <AboutUs />
+               </Route>
 
-            <Route path="/work" exact>
-               <OurWork />
-            </Route>
-            <Route path="/work/:id">
-               {/* The ':id' means you can add anything after /work and it will take you to MovieDetail page */}
-               <MovieDetail />
-            </Route>
+               <Route path="/work" exact>
+                  <OurWork />
+               </Route>
+               <Route path="/work/:id">
+                  {/* The ':id' means you can add anything after /work and it will take you to MovieDetail page */}
+                  <MovieDetail />
+               </Route>
 
-            <Route path="/contact">
-               <ContactUs />
-            </Route>
-         </Switch>
+               <Route path="/contact">
+                  <ContactUs />
+               </Route>
+            </Switch>
+         </AnimatePresence>
       </div>
    );
 }

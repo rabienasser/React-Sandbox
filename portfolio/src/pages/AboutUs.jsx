@@ -1,5 +1,9 @@
 import React from 'react'
 
+// Import animations
+import {motion} from 'framer-motion'
+import {pageAnimation} from '../animation'
+
 // Import components
 import AboutSection from '../components/AboutSection'
 import ServicesSection from '../components/ServicesSection'
@@ -9,11 +13,11 @@ import styled from 'styled-components'
 
 function AboutUs() {
     return (
-        <div className="App">
+        <motion.div variants={pageAnimation} initial='hidden' animate='show' exit='exit'>
             <AboutSection />
             <ServicesSection />
             <FAQ />
-        </div>
+        </motion.div>
     )
 }
 
