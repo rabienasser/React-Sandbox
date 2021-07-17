@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+import MovieDetail from './MovieDetail'
+
 // Styled Components
 import styled from 'styled-components'
 
@@ -15,22 +17,22 @@ function OurWork() {
             <Movie>
                 <h2>The Athlete</h2>
                 <div className="line"></div>
-                <Link>
+                <Link to='/work/the-athlete'>
                     <img src={athlete} alt="athlete" />
                 </Link>
             </Movie>
             <Movie>
                 <h2>The Racer</h2>
                 <div className="line"></div>
-                <Link>
+                <Link to='/work/the-racer'>
                     <img src={racer} alt="racer" />
                 </Link>
             </Movie>
             <Movie>
                 <h2>Good Times</h2>
                 <div className="line"></div>
-                <Link>
-                    <img src={goodtimes} alt="good times" />
+                <Link to='/work/good-times'>
+                    <img className='goodtimes-img' src={goodtimes} alt="good times" />
                 </Link>
             </Movie>
         </Work>
@@ -59,6 +61,9 @@ const Movie = styled.div`
         object-fit: cover;
     }
 
+    .goodtimes-img {
+        object-position: bottom;
+    }
 
 `
 
