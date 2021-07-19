@@ -1,20 +1,22 @@
 import React from 'react'
 // Import image
 import home2 from '../img/home2.png'
-
 // Styled components
 import styled from 'styled-components'
 import {About, Description, Image, Hide} from '../styles'
-
 // Import Icons
 import clock from '../img/clock.svg'
 import diaphragm from '../img/diaphragm.svg'
 import money from '../img/money.svg'
 import teamwork from '../img/teamwork.svg'
+// Animate section scrolling
+import{useScroll} from './UseScroll'
+import {scrollReveal} from '../animation'
 
 function ServicesSection() {
+    const [element, controls] = useScroll()
     return (
-        <Services>
+        <Services variants={scrollReveal} animate={controls} initial='hidden' ref={element}>
             <Description>
                 <h2>
                     High <span>quality</span> services
@@ -22,28 +24,28 @@ function ServicesSection() {
                 <Cards>
                     <Card>
                         <Icon>
-                            <img src={clock}  />
+                            <img src={clock} alt='clock' />
                             <h3>Efficient</h3>
                         </Icon>
                         <p>Lorem ipsum dolor sit amet.</p>
                     </Card>
                     <Card>
                         <Icon>
-                            <img src={diaphragm}  />
+                            <img src={diaphragm} alt='diaphragm' />
                             <h3>Diaphragm</h3>
                         </Icon>
                         <p>Lorem ipsum dolor sit amet.</p>
                     </Card>
                     <Card>
                         <Icon>
-                            <img src={money}  />
+                            <img src={money} alt='money' />
                             <h3>Affordable</h3>
                         </Icon>
                         <p>Lorem ipsum dolor sit amet.</p>
                     </Card>
                     <Card>
                         <Icon>
-                            <img src={teamwork}  />
+                            <img src={teamwork} alt='teamwork' />
                             <h3>Teamwork</h3>
                         </Icon>
                         <p>Lorem ipsum dolor sit amet.</p>
@@ -51,7 +53,7 @@ function ServicesSection() {
                 </Cards>
             </Description>
             <Image>
-                <img src={home2}  />
+                <img src={home2} alt='home' />
             </Image>
         </Services>
     )
