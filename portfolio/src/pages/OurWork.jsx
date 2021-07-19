@@ -1,13 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
 // Import animations
 import {motion} from 'framer-motion'
-import {pageAnimation} from '../animation'
-
+import {pageAnimation, fade, photoAnim, lineAnim, colorSlider} from '../animation'
 // Styled Components
 import styled from 'styled-components'
-
 // Images
 import athlete from '../img/athlete-small.png'
 import racer from '../img/theracer-small.png'
@@ -16,11 +13,19 @@ import goodtimes from '../img/goodtimes-small.png'
 function OurWork() {
     return (
         <Work variants={pageAnimation} initial='hidden' animate='show' exit='exit' style={{background: 'white'}}>
+            {/* Color Frames */}
+            <Frame1 variants={colorSlider} />
+            <Frame2 variants={colorSlider} />
+            <Frame3 variants={colorSlider} />
+            <Frame4 variants={colorSlider} />
+
             <Movie>
-                <h2>The Athlete</h2>
-                <div className="line"></div>
+                <motion.h2 variants={fade}>The Athlete</motion.h2>
+                <Hide>
+                    <motion.div className="line" variants={lineAnim}></motion.div>
+                </Hide>
                 <Link to='/work/the-athlete'>
-                    <img src={athlete} alt="athlete" />
+                    <motion.img src={athlete} alt="athlete" variants={photoAnim} />
                 </Link>
             </Movie>
             <Movie>
@@ -67,6 +72,30 @@ const Movie = styled.div`
         object-position: bottom;
     }
 
+`
+
+const Hide = styled.div`
+    overflow: hidden;
+`
+
+// Frame Animation
+const Frame1 = styled(motion.div)`
+    position: fixed;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    height: 100vh;
+    background: #fffebf;
+    z-index: 2;
+`
+const Frame2 = styled(Frame1)`
+    background: #ff8efb;
+`
+const Frame3 = styled(Frame1)`
+    background: #8ed2ff;
+`
+const Frame4 = styled(Frame1)`
+    background: #8effa0
 `
 
 export default OurWork

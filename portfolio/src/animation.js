@@ -9,7 +9,7 @@ export const pageAnimation = {
       opacity: 1,
       y: 0,
       transition: {
-         duration: 1,
+         duration: 0.75,
          when: "beforeChildren",
          staggerChildren: 0.25,
       },
@@ -72,7 +72,7 @@ export const fade = {
 
 export const photoAnim = {
    hidden: {
-      scale: 1.5,
+      scale: 1.25,
       opacity: 0,
    },
    show: {
@@ -80,7 +80,32 @@ export const photoAnim = {
       opacity: 1,
       transition: {
          ease: "easeOut",
-         duration: 0.6,
+         duration: 0.75,
+      },
+   },
+};
+
+export const lineAnim = {
+   hidden: {
+      width: "0%",
+   },
+   show: {
+      width: "100%",
+      transition: { duration: 1 },
+   },
+};
+
+export const colorSlider = {
+   hidden: {
+      x: "-130%",
+      skew: "45deg",
+   },
+   show: {
+      x: "100%",
+      skew: "0deg",
+      transition: {
+         ease: "easeOut",
+         duration: 1,
       },
    },
 };
