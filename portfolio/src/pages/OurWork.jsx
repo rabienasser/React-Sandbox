@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 // Import animations
 import {motion} from 'framer-motion'
 import {pageAnimation, fade, photoAnim, lineAnim, colorSlider} from '../animation'
+import {useScroll} from '../components/UseScroll'
 // Styled Components
 import styled from 'styled-components'
 // Images
@@ -11,6 +12,8 @@ import racer from '../img/theracer-small.png'
 import goodtimes from '../img/goodtimes-small.png'
 
 function OurWork() {
+    const [element, controls] = useScroll()
+    const [element2, controls2] = useScroll()
     return (
         <Work variants={pageAnimation} initial='hidden' animate='show' exit='exit' style={{background: 'white'}}>
             {/* Color Frames */}
@@ -21,23 +24,23 @@ function OurWork() {
 
             <Movie>
                 <motion.h2 variants={fade}>The Athlete</motion.h2>
-                <Hide>
                     <motion.div className="line" variants={lineAnim}></motion.div>
-                </Hide>
                 <Link to='/work/the-athlete'>
+                <Hide>
                     <motion.img src={athlete} alt="athlete" variants={photoAnim} />
+                </Hide>
                 </Link>
             </Movie>
-            <Movie>
+            <Movie variants={fade} animate={controls} initial='hidden' ref={element}>
                 <h2>The Racer</h2>
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to='/work/the-racer'>
                     <img src={racer} alt="racer" />
                 </Link>
             </Movie>
-            <Movie>
+            <Movie variants={fade} animate={controls2} initial='hidden' ref={element2}>
                 <h2>Good Times</h2>
-                <div className="line"></div>
+                <motion.div variants={lineAnim} className="line"></motion.div>
                 <Link to='/work/good-times'>
                     <img className='goodtimes-img' src={goodtimes} alt="good times" />
                 </Link>
@@ -53,7 +56,7 @@ const Work = styled(motion.div)`
     color: #1b1b1b;
 `
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
     padding-bottom: 10rem;
 
     .line {

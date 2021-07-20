@@ -6,7 +6,7 @@ import { useAnimation } from "framer-motion";
 export const useScroll = () => {
    // Animate scrolling
    const controls = useAnimation();
-   const [element, view] = useInView({ threshold: 0.5 });
+   const [element, view] = useInView({ threshold: 0.25 });
    console.log(view); //True or False depending on if the seciton is in the window view
    if (view) {
       controls.start("show");

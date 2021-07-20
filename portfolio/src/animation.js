@@ -120,3 +120,33 @@ export const scrollReveal = {
       },
    },
 };
+
+export const contactBlocks = {
+   hidden: {
+      y: 500,
+      scale: 1.3,
+   },
+   show: {
+      y: 0,
+      scale: 1,
+      transition: {
+         duration: 1,
+         ease: "easeOut",
+      },
+   },
+};
+
+export const iconAnim = {
+   hidden: {
+      scale: 0,
+      rotate: 180,
+   },
+   show: {
+      rotate: 0,
+      scale: 1,
+      transition: {
+         type: "spring",
+         duration: 1,
+      },
+   },
+};
