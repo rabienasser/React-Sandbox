@@ -1,7 +1,7 @@
 import React from 'react'
 // Import animations
 import {motion} from 'framer-motion'
-import {pageAnimation, titleAnim} from '../animation'
+import {pageAnimation, titleAnim, fade} from '../animation'
 // Styled
 import styled from 'styled-components'
 // Font Awesome
@@ -13,7 +13,7 @@ import ContactBlock from '../components/ContactBlock'
 function ContactUs() {
     return (
         <ContactStyle variants={pageAnimation} initial='hidden' animate='show' exit='exit' style={{background: 'white'}}>
-            <h1>Get In Touch</h1>
+            <motion.h1 variants={fade}>Get In Touch</motion.h1>
             <div className="contact-blocks" >
                 <ContactBlock text={'Let\'s have a chat'} icon={faComments} button={'Start a Live Chat'}  />
                 <ContactBlock text={'Drop us a line'} icon={faEnvelope} button={'Submit a Request'}  />

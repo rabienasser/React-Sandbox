@@ -8,6 +8,8 @@ import {motion} from 'framer-motion'
 import {titleAnim, fade, photoAnim} from '../animation'
 // Import Wave SVG
 import Wave from './Wave'
+// React Router Dom
+import {Link} from 'react-router-dom'
 
 function AboutSection() {
     return (
@@ -25,7 +27,7 @@ function AboutSection() {
                     </Hide>
                 </motion.div>
                 <motion.p variants={fade}>Contact us for any photography or videography ideas that you have. We have professionals with amazing skills</motion.p>
-                <motion.button variants={fade}>Contact Us</motion.button>
+                <Link to='/contact'><motion.button variants={fade}>Contact Us</motion.button></Link>
             </Description>
             <Image>
                 <motion.img src={home1} alt='home' variants={photoAnim} />
