@@ -8,6 +8,12 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Nobile', sans-serif;
     }
 
+    html {
+        @media(max-width: 1440px){
+            font-size: 80%;
+        }
+    }
+
     body {
         background: #1b1b1b;
         color: white;

@@ -19,8 +19,8 @@ function ContactBlock({text, icon, button}) {
 
 const Block = styled(motion.div)`
     background: #23d997;
-    height: 250px;
-    width: 330px;
+    height: 20rem;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     color: #353535;
@@ -28,17 +28,22 @@ const Block = styled(motion.div)`
     align-items: center;
     justify-content: space-around;
     box-shadow: 10px 10px 8px #888888; 
+    @media (max-width: 1400px){
+        margin: auto;
+    }
+    
 
     .icon {
         font-size: 70px;
         position: relative;
-        top: -55px;
+        top: -60px;
         color: #353535;
     }
 
     h4 {
         color: #353535;
         font-size: 1.5rem;
+        
     }
 
     button {
@@ -49,6 +54,7 @@ const Block = styled(motion.div)`
         font-weight: lighter;
         transition: 0.3s ease all;
         width: 75%;
+        
 
         &:hover {
             color: white;

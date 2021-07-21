@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {MovieState} from '../movieState'
-
+// Styled
 import styled from 'styled-components'
-
 // Import animations
 import {motion} from 'framer-motion'
 import {pageAnimation, movieDetailAnimation} from '../animation'
-
+import {Hide} from '../styles'
 
 function MovieDetail() {
     const history = useHistory()
@@ -25,8 +24,9 @@ function MovieDetail() {
 
     return (
         <>
+        <Hide>
         {movie && (
-        <motion.div variants={movieDetailAnimation} initial='hidden' animate='show' exit='exit'>
+        <motion.div variants={pageAnimation} initial='hidden' animate='show' exit='exit'>
             <Headline>
                 <h2>{movie.title}</h2>
                 <img className={`${movie.url === '/work/good-times' ? 'good-times-img' : ''}`} src={movie.mainImg} alt="movie" />
@@ -43,6 +43,7 @@ function MovieDetail() {
             </ImageDisplay>
         </motion.div>
         )}
+        </Hide>
         </>
     )
 }
@@ -89,10 +90,17 @@ const Awards = styled.div`
     margin: 5rem 10rem;
     align-items: center;
     justify-content: space-around;
+    @media(max-width: 900px){
+        display: block;
+        margin: 2rem 2rem;
+    }
 `
 
 const AwardStyle = styled.div`
     padding: 0 3rem;
+    @media(max-width: 900px){
+       padding: 2rem 0;
+    }
 
     h3 {
         font-size: 1.5rem;

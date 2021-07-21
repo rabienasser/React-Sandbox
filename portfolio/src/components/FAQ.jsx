@@ -61,6 +61,9 @@ const FAQstyle = styled(About)`
 
     h4 {
         font-size: 1.5rem;
+        @media(max-width: 1024px){
+            text-align: left;
+        }
     }
 
     .faq-line {
@@ -79,6 +82,9 @@ const FAQstyle = styled(About)`
 
         p{
             padding: 1rem 0;
+            @media(max-width: 1024px){
+            text-align: left;
+        }
         }
     }
 `

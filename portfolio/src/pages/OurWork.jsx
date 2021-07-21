@@ -54,6 +54,9 @@ const Work = styled(motion.div)`
     overflow: hidden;
     padding: 5rem 10rem 0rem 10rem;
     color: #1b1b1b;
+    @media(max-width: 900px){
+        padding: 2rem 2rem;
+    }
 `
 
 const Movie = styled(motion.div)`

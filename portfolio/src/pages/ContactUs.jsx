@@ -32,12 +32,22 @@ const ContactStyle = styled(motion.div)`
     h1 {
         text-align: center;
         font-size: 3rem;
-        margin-bottom: 7rem;
+        margin-bottom: 5rem;
     }
 
     .contact-blocks {
         display: flex;
         justify-content: space-evenly;
+        @media (max-width: 1400px){
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 0rem 10rem;
+            grid-gap: 5rem;
+        }
+        @media (max-width: 768px){
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
 `
 

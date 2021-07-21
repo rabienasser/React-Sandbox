@@ -76,12 +76,21 @@ const Cards = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    @media(max-width: 768px){
+        display: flex;
+        flex-wrap: wrap;
+    }
 `
 
 const Card = styled.div`
     flex-basis: 20rem;
-
-    
+   margin: auto;
+   @media(max-width: 768px){
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+   }
 `
 
 const Icon = styled.div`

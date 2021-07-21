@@ -55,6 +55,23 @@ const StyledNav = styled.nav`
     #list-item {
         font-size: 1rem;
     }
+
+    @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 1rem 1rem;
+    #logo {
+      display: inline-block;
+      margin: 1rem;
+    }
+    ul {
+      padding: 2rem;
+      justify-content: space-around;
+      width: 100%;
+      li {
+        padding: 0;
+      }
+    }
+  }
 `
 
 export default Navbar
